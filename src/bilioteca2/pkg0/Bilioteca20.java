@@ -28,8 +28,16 @@ public class Bilioteca20
     aluno.setTelefone("999");
     aluno.setMatricula("1987");
     valor.put(aluno.getMatricula(), aluno);
-    salvaAluno.Gravar_aluno(valor);
+    salvaAluno.Gravar_aluno(valor); 
     
+    aluno.setNome("Ivon");
+    aluno.setCurso("TADS");
+    aluno.setEndereco("Bonifácio");
+    aluno.setTelefone("999");
+    aluno.setMatricula("1987");
+    valor.put(aluno.getMatricula(), aluno);
+    salvaAluno.Gravar_aluno(valor); 
+
     aluno.setNome("Zec");
     aluno.setCurso("TADS");
     aluno.setEndereco("Bonifácio");
