@@ -19,13 +19,15 @@ public class Bilioteca20
 //    XmlDao xmlDao = new XmlDao();
 //    xmlDao.saveAllLivrosXML(livro);
 //    System.out.println(livro);
-    Aluno aluno = new Aluno();
+    
+/*    Aluno aluno = new Aluno();
     Aluno aluno2 = new Aluno();
     Aluno aluno3 = new Aluno();
     HashMap valor = new HashMap();
     AlunoDAO salvaAluno = new AlunoDAO();
-    
-/*    aluno.setNome("Zeus");
+    EmprestimoDAO salvaEmpre = new EmprestimoDAO();
+
+    aluno.setNome("Zeus");
     aluno.setCurso("TADS");
     aluno.setEndereco("Bonifácio");
     aluno.setTelefone("999");
@@ -47,10 +49,30 @@ public class Bilioteca20
     aluno3.setTelefone("999");
     aluno3.setMatricula("1997");
     valor.put(aluno3.getMatricula(), aluno3);
-    salvaAluno.Gravar_aluno(valor);*/
+    salvaAluno.Gravar_aluno(valor);
     
+    
+    Emprestimo empres2 = new Emprestimo();
+    Emprestimo empres3 = new Emprestimo();
+    
+    empres.setCodigoBarras(97453551);
+    empres.setExemplar(9);
+    valor.put(empres.getCodigoBarras(), empres);
+    salvaEmpre.Gravar_Emprestimo(valor);
+    
+    empres2.setCodigoBarras(97453550);
+    empres2.setExemplar(8);
+    valor.put(empres2.getCodigoBarras(), empres2);
+    salvaEmpre.Gravar_Emprestimo(valor);
+    
+    empres3.setCodigoBarras(97500927);
+    empres3.setExemplar(1);
+    valor.put(empres3.getCodigoBarras(), empres3);
+    salvaEmpre.Gravar_Emprestimo(valor);*/
+
     Emprestimo empres = new Emprestimo();
     System.out.println(empres.verifica_aluno("1895"));
+    System.out.println(empres.verifica_livro(97453551)); //Introdução à administração
     
     
   }

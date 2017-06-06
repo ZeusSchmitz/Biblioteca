@@ -74,15 +74,15 @@ public class LivroDAO
     }
   }
 
-  public HashMap<String, Livro> loadAll()
+  public HashMap<Integer, Livro> loadAll()
   {
-    HashMap<String, Livro> livros = new HashMap();
+    HashMap<Integer, Livro> livros = new HashMap();
     try
     {
       FileInputStream fis = new FileInputStream("C:\\Users\\User\\Documents\\NetBeansProjects\\GerenciaBiblioteca\\GereciaBilioteca\\04-final-livros.xml");
       BufferedInputStream bis = new BufferedInputStream(fis);
       XMLDecoder xmlDecoder = new XMLDecoder(bis);
-      livros = (HashMap<String, Livro>) xmlDecoder.readObject();
+      livros = (HashMap<Integer, Livro>) xmlDecoder.readObject();
     } catch (Exception e)
     {
       System.out.println("erro ao ler");
