@@ -20,6 +20,8 @@ public class Bilioteca20
 //    xmlDao.saveAllLivrosXML(livro);
 //    System.out.println(livro);
     Aluno aluno = new Aluno();
+    Aluno aluno2 = new Aluno();
+    Aluno aluno3 = new Aluno();
     HashMap valor = new HashMap();
     AlunoDAO salvaAluno = new AlunoDAO();
     
@@ -31,20 +33,20 @@ public class Bilioteca20
     valor.put(aluno.getMatricula(), aluno);
     salvaAluno.Gravar_aluno(valor); 
     
-    aluno.setNome("Ivon");
-    aluno.setCurso("TADS");
-    aluno.setEndereco("Bonifácio");
-    aluno.setTelefone("999");
-    aluno.setMatricula("1895");
-    valor.put(aluno.getMatricula(), aluno);
+    aluno2.setNome("Ivon");
+    aluno2.setCurso("TADS");
+    aluno2.setEndereco("Bonifácio");
+    aluno2.setTelefone("999");
+    aluno2.setMatricula("1895");
+    valor.put(aluno2.getMatricula(), aluno2);
     salvaAluno.Gravar_aluno(valor); 
 
-    aluno.setNome("Zec");
-    aluno.setCurso("TADS");
-    aluno.setEndereco("Bonifácio");
-    aluno.setTelefone("999");
-    aluno.setMatricula("1997");
-    valor.put(aluno.getMatricula(), aluno);
+    aluno3.setNome("Zec");
+    aluno3.setCurso("TADS");
+    aluno3.setEndereco("Bonifácio");
+    aluno3.setTelefone("999");
+    aluno3.setMatricula("1997");
+    valor.put(aluno3.getMatricula(), aluno3);
     salvaAluno.Gravar_aluno(valor);*/
     
     Emprestimo empres = new Emprestimo();
