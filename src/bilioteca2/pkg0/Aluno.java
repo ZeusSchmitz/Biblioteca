@@ -1,6 +1,6 @@
 package bilioteca2.pkg0;
 
-public class Alunos
+public class Aluno
 {
   private String nome, curso, endereco, telefone, matricula;
 

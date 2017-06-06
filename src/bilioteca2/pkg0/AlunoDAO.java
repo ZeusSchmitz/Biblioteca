@@ -9,10 +9,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 
-public class AlunosDAO
+public class AlunoDAO
 {
 
-  public void Gravar_aluno(HashMap<String, Alunos> lista)
+  public void Gravar_aluno(HashMap<String, Aluno> lista)
   {
     FileOutputStream acessa_arquivo = null;
     try
@@ -31,16 +31,16 @@ public class AlunosDAO
 
   }
 
-  public HashMap<String, Alunos> Ler_Aluno()
+  public HashMap<String, Aluno> Ler_Aluno()
   {
-    HashMap<String, Alunos> alunos_map = new HashMap<String, Alunos>();
+    HashMap<String, Aluno> alunos_map = new HashMap<String, Aluno>();
     FileInputStream acessa_arquivo;
     try
     {
       acessa_arquivo = new FileInputStream("C:\\Users\\User\\Documents\\NetBeansProjects\\GerenciaBiblioteca\\GereciaBilioteca\\Alunos.xml");
       BufferedInputStream pegar_arquivo = new BufferedInputStream(acessa_arquivo);
       XMLDecoder ler_XML = new XMLDecoder(pegar_arquivo);
-      alunos_map = (HashMap<String, Alunos>) ler_XML.readObject();
+      alunos_map = (HashMap<String, Aluno>) ler_XML.readObject();
       //System.out.println("foi: ");
     } catch (FileNotFoundException ex)
     {

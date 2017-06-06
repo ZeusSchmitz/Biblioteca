@@ -1,38 +1,30 @@
 package bilioteca2.pkg0;
 
+import dao.xml.LivroDAO;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class Emprestimo
 {
 
-  AlunosDAO p = new AlunosDAO();
-  LivroDAO l = new LivroDAO();
-  Alunos aluno = new Alunos();
+  AlunoDAO p = new AlunoDAO();
+//  LivroDAO l = new LivroDAO();
+  Aluno aluno = new Aluno();
 
-//  private Alunos aluno = null;
-//  private Livro libro = null;
-
-  public Alunos verifica_aluno(int matricula)
+  public String verifica_aluno(String matricula)
   {
 
-    HashMap<String, Alunos> aluno_map = p.Ler_Aluno();
+    HashMap<String, Aluno> aluno_map = p.Ler_Aluno();
     Set<String> chaves = aluno_map.keySet();
 
-    for (Iterator<String> iterator = chaves.iterator(); iterator.hasNext();)
-    {
-      String chave = iterator.next();
-      if (matricula == Integer.parseInt(chave))
-      {
-        System.out.println("Aluno cadastrado");
-      }
-      else
-      {
-        System.out.println("Aluno não cadastrado");
-      }
-    }
-    return aluno;
+    boolean existeMatr = chaves.containsAll(chaves);
+
+    System.out.println((existeMatr == true)? "Aluno cadastrado: " + aluno_map.get(matricula).getNome():"Aluno não cadastrado");
+    
+    return aluno_map.get(matricula).getNome();
   }
 
   public Livro verifica_livro()

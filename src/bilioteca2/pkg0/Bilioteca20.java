@@ -1,5 +1,6 @@
 package bilioteca2.pkg0;
 
+import dao.xml.LivroDAO;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,11 +19,11 @@ public class Bilioteca20
 //    XmlDao xmlDao = new XmlDao();
 //    xmlDao.saveAllLivrosXML(livro);
 //    System.out.println(livro);
-    Alunos aluno = new Alunos();
+    Aluno aluno = new Aluno();
     HashMap valor = new HashMap();
-    AlunosDAO salvaAluno = new AlunosDAO();
+    AlunoDAO salvaAluno = new AlunoDAO();
     
-    aluno.setNome("Zeus");
+/*    aluno.setNome("Zeus");
     aluno.setCurso("TADS");
     aluno.setEndereco("Bonifácio");
     aluno.setTelefone("999");
@@ -34,7 +35,7 @@ public class Bilioteca20
     aluno.setCurso("TADS");
     aluno.setEndereco("Bonifácio");
     aluno.setTelefone("999");
-    aluno.setMatricula("1987");
+    aluno.setMatricula("1895");
     valor.put(aluno.getMatricula(), aluno);
     salvaAluno.Gravar_aluno(valor); 
 
@@ -44,14 +45,10 @@ public class Bilioteca20
     aluno.setTelefone("999");
     aluno.setMatricula("1997");
     valor.put(aluno.getMatricula(), aluno);
-    salvaAluno.Gravar_aluno(valor);
-/*    LivroDAO salva = new LivroDAO();
-    XmlDao convXml = new XmlDao();
-    salva.importa_livros();
-    convXml.saveAllLivrosXML(salva.importLivro);*/
+    salvaAluno.Gravar_aluno(valor);*/
     
     Emprestimo empres = new Emprestimo();
-    empres.verifica_aluno(1987);
+    System.out.println(empres.verifica_aluno("1895"));
     
     
   }
