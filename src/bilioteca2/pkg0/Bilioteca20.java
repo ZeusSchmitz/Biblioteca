@@ -1,5 +1,7 @@
 package bilioteca2.pkg0;
 
+import dao.EmprestimoDAO;
+import dao.AlunoDAO;
 import dao.xml.LivroDAO;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

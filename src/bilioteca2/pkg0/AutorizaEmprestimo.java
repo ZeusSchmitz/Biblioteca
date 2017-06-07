@@ -1,5 +1,7 @@
 package bilioteca2.pkg0;
 
+import dao.EmprestimoDAO;
+import dao.AlunoDAO;
 import dao.xml.LivroDAO;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,15 +11,15 @@ import java.util.Set;
 
 public class AutorizaEmprestimo
 {
-  AlunoDAO p = new AlunoDAO();
-  LivroDAO l = new LivroDAO();
+  AlunoDAO alunoDao = new AlunoDAO();
+  LivroDAO livroDao = new LivroDAO();
   Aluno aluno = new Aluno();
-  EmprestimoDAO e = new EmprestimoDAO();
+  EmprestimoDAO empDao = new EmprestimoDAO();
 
   public String verifica_aluno(String matricula)
   {
 
-    HashMap<String, Aluno> aluno_map = p.Ler_Aluno();
+    HashMap<String, Aluno> aluno_map = alunoDao.Ler_Aluno();
     Set<String> chaves = aluno_map.keySet();
     String resultado;
     
@@ -36,7 +38,7 @@ public class AutorizaEmprestimo
 
   public void verifica_livro(int codigoBarras, int exemplar, String nomeAluno)
   {
-    HashMap<Integer, Livro> livro_map = l.lerLivros();
+    HashMap<Integer, Livro> livro_map = livroDao.lerLivros();
     Set<Integer> chaves = livro_map.keySet();
     
     boolean existeLivro = chaves.contains(codigoBarras);
@@ -53,7 +55,7 @@ public class AutorizaEmprestimo
   
   public void verificaEmprestimo(int codigoBarras, int exemplar, String nomeAluno)
   {
-    HashMap<Integer, Emprestimo> empr_map = e.Ler_Emprestimo();
+    HashMap<Integer, Emprestimo> empr_map = empDao.Ler_Emprestimo();
     Set<Integer> chavesEmpr = empr_map.keySet();
     
     boolean codPedido = chavesEmpr.contains(codigoBarras);
@@ -71,10 +73,9 @@ public class AutorizaEmprestimo
 
   private void efetuaEmprestimo(int codigoBarras, int exemplar, String nomeAluno)
   {
-    EmprestimoDAO salvarEmpr = new EmprestimoDAO();
     Emprestimo emp = new Emprestimo();
     Date data = new Date();
-    HashMap<Integer, Emprestimo> empr_map = e.Ler_Emprestimo(); 
+    HashMap<Integer, Emprestimo> empr_map = empDao.Ler_Emprestimo(); 
     SimpleDateFormat fomatador = new SimpleDateFormat("dd/MM/yyyy");
     Calendar cal = Calendar.getInstance();
     cal.setTime(data);
@@ -86,13 +87,12 @@ public class AutorizaEmprestimo
     emp.setDiaEmpr(fomatador.format(data));
     emp.setDiaEntrg(fomatador.format(cal.getTime()));
     empr_map.put(emp.getCodigoBarras(), emp);
-    salvarEmpr.Gravar_Emprestimo(empr_map);
+    empDao.Gravar_Emprestimo(empr_map);
   }
   
   public void devolverEmprestimo(int codigoBarras)
   {
-    EmprestimoDAO salvarDevol = new EmprestimoDAO();
-    HashMap<Integer, Emprestimo> empr_map = e.Ler_Emprestimo();
+    HashMap<Integer, Emprestimo> empr_map = empDao.Ler_Emprestimo();
     Set<Integer> chavesEmpr = empr_map.keySet();
     
     boolean codPedido = chavesEmpr.contains(codigoBarras);
@@ -100,12 +100,12 @@ public class AutorizaEmprestimo
     if(codPedido)
     {
       empr_map.remove(codigoBarras);
-      salvarDevol.Gravar_Emprestimo(empr_map);
+      empDao.Gravar_Emprestimo(empr_map);
       System.out.println("Devolução concluída"); 
     }
     else
     {
-      System.out.println("Não"); 
+      System.out.println("Emprestimo inexistente"); 
     }
   }
 }

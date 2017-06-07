@@ -1,5 +1,6 @@
-package bilioteca2.pkg0;
+package dao;
 
+import bilioteca2.pkg0.Aluno;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.BufferedInputStream;
