@@ -86,9 +86,10 @@ public class Bilioteca20
     valor.put(empres3.getCodigoBarras(), empres3);
     salvaEmpre.Gravar_Emprestimo(valor);*/
 
-    Emprestimo empres = new Emprestimo();
+    AutorizaEmprestimo empres = new AutorizaEmprestimo();
     System.out.println(empres.verifica_aluno("1895"));
-    empres.verifica_livro(97453543, 1, "Schmitz"); //Introdução à administração
+//    empres.verifica_livro(97453545, 3, "Karin"); //Introdução à administração
+    empres.devolverEmprestimo(97453545);
     
     
   }

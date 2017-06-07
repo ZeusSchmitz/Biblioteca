@@ -59,7 +59,7 @@ public class LivroDAO
     FileOutputStream fout = null;
     try
     {
-      fout = new FileOutputStream("C:\\Users\\User\\Documents\\NetBeansProjects\\GerenciaBiblioteca\\GereciaBilioteca\\04-final-livros.ser");
+      fout = new FileOutputStream("C:\\GereciaBilioteca\\04-final-livros.ser");
 
       ObjectOutputStream oos = new ObjectOutputStream(fout);
       oos.writeObject(livros);
@@ -69,13 +69,13 @@ public class LivroDAO
     }
   }
 
-  public HashMap<String, Livro> loadAll()
+  public HashMap<String, Livro> lerBIN()
   {
     ObjectInputStream ios = null;
     HashMap<String, Livro> livros = new HashMap();
     try
     {
-      ios = new ObjectInputStream(new FileInputStream("C:\\Users\\User\\Documents\\NetBeansProjects\\GerenciaBiblioteca\\GereciaBilioteca\\04-final-livros.ser"));
+      ios = new ObjectInputStream(new FileInputStream("C:\\GereciaBilioteca\\04-final-livros.ser"));
       while ((livros = (HashMap<String, Livro>) ios.readObject()) != null)
       {
         System.out.println("lendo dados...");

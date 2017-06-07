@@ -16,7 +16,7 @@ public class EmprestimoDAO
     FileOutputStream acessa_arquivo = null;
     try
     {
-      acessa_arquivo = new FileOutputStream("C:\\Users\\User\\Documents\\NetBeansProjects\\GerenciaBiblioteca\\GereciaBilioteca\\Emprestimos.xml");
+      acessa_arquivo = new FileOutputStream("C:\\GereciaBilioteca\\Emprestimos.xml");
       BufferedOutputStream pegar_arquivo = new BufferedOutputStream(acessa_arquivo);
       try (XMLEncoder gravar_xml = new XMLEncoder(pegar_arquivo))
       {
@@ -36,7 +36,7 @@ public class EmprestimoDAO
     FileInputStream acessa_arquivo;
     try
     {
-      acessa_arquivo = new FileInputStream("C:\\Users\\User\\Documents\\NetBeansProjects\\GerenciaBiblioteca\\GereciaBilioteca\\Emprestimos.xml");
+      acessa_arquivo = new FileInputStream("C:\\GereciaBilioteca\\Emprestimos.xml");
       BufferedInputStream pegar_arquivo = new BufferedInputStream(acessa_arquivo);
       XMLDecoder ler_XML = new XMLDecoder(pegar_arquivo);
       alunos_map = (HashMap<Integer, Emprestimo>) ler_XML.readObject();

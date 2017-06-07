@@ -61,7 +61,7 @@ public class LivroDAO
     FileOutputStream fout = null;
     try
     {
-      fout = new FileOutputStream("C:\\Users\\User\\Documents\\NetBeansProjects\\GerenciaBiblioteca\\GereciaBilioteca\\04-final-livros.xml");
+      fout = new FileOutputStream("C:\\GereciaBilioteca\\04-final-livros.xml");
       BufferedOutputStream bos = new BufferedOutputStream(fout);
       try (XMLEncoder xmlEncoder = new XMLEncoder(bos))
       {
@@ -79,7 +79,7 @@ public class LivroDAO
     HashMap<Integer, Livro> livros = new HashMap();
     try
     {
-      FileInputStream fis = new FileInputStream("C:\\Users\\User\\Documents\\NetBeansProjects\\GerenciaBiblioteca\\GereciaBilioteca\\04-final-livros.xml");
+      FileInputStream fis = new FileInputStream("C:\\GereciaBilioteca\\04-final-livros.xml");
       BufferedInputStream bis = new BufferedInputStream(fis);
       XMLDecoder xmlDecoder = new XMLDecoder(bis);
       livros = (HashMap<Integer, Livro>) xmlDecoder.readObject();
