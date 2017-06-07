@@ -74,7 +74,7 @@ public class LivroDAO
     }
   }
 
-  public HashMap<Integer, Livro> loadAll()
+  public HashMap<Integer, Livro> lerLivros()
   {
     HashMap<Integer, Livro> livros = new HashMap();
     try

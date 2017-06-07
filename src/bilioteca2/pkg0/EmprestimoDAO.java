@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class EmprestimoDAO
 {
-  public void Gravar_Emprestimo(HashMap<String, Emprestimo> lista)
+  public void Gravar_Emprestimo(HashMap<Integer, Emprestimo> lista)
   {
     FileOutputStream acessa_arquivo = null;
     try
@@ -30,16 +30,16 @@ public class EmprestimoDAO
     }
   }
 
-  public HashMap<String, Emprestimo> Ler_Emprestimo()
+  public HashMap<Integer, Emprestimo> Ler_Emprestimo()
   {
-    HashMap<String, Emprestimo> alunos_map = new HashMap<String, Emprestimo>();
+    HashMap<Integer, Emprestimo> alunos_map = new HashMap<>(); //Integer, Emprestimo
     FileInputStream acessa_arquivo;
     try
     {
       acessa_arquivo = new FileInputStream("C:\\Users\\User\\Documents\\NetBeansProjects\\GerenciaBiblioteca\\GereciaBilioteca\\Emprestimos.xml");
       BufferedInputStream pegar_arquivo = new BufferedInputStream(acessa_arquivo);
       XMLDecoder ler_XML = new XMLDecoder(pegar_arquivo);
-      alunos_map = (HashMap<String, Emprestimo>) ler_XML.readObject();
+      alunos_map = (HashMap<Integer, Emprestimo>) ler_XML.readObject();
     } catch (FileNotFoundException ex)
     {
       System.out.println("Erro ao ler: " + ex.getMessage());
