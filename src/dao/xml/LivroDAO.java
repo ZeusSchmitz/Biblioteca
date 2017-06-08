@@ -1,6 +1,7 @@
 package dao.xml;
 
 import bilioteca2.pkg0.Livro;
+import dao.EmprestimoDAO;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.BufferedInputStream;
@@ -10,9 +11,28 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 
 public class LivroDAO
 {
+  public void verifica_livro(int codigoBarras, int exemplar, String nomeAluno)
+  {
+    HashMap<Integer, Livro> livro_map = lerLivros();
+    Set<Integer> chaves = livro_map.keySet();
+    EmprestimoDAO empDao = new EmprestimoDAO();
+    
+    boolean existeLivro = chaves.contains(codigoBarras);
+    
+    if(existeLivro)
+    {
+      empDao.verificaEmprestimo(codigoBarras, exemplar, nomeAluno);
+    }
+    else
+    {
+      System.out.println("Livro não cadástrado");
+    }
+  }
+  
   public void importa_livros()
   {
     HashMap<Integer, Livro> importLivro = new HashMap<>();
@@ -22,24 +42,13 @@ public class LivroDAO
       while (file.hasNextLine())
       {
         String linha = file.nextLine();
-        Livro l = new Livro();
         String[] colunas = linha.split("\\|");
         try
-        {
-          l.setCodigoDeBarras(Integer.parseInt(colunas[0]));
-          l.setIdLivro(Integer.parseInt(colunas[1]));
-          l.setExemplar(Integer.parseInt(colunas[2]));
-          l.setDataAquisicaoExemplar(colunas[3]);
-          l.setDataCadastroSistema(colunas[4]);
-          l.setClassificacao(colunas[5]);
-          l.setAreaConhecimento(colunas[6]);
-          l.setAutor(colunas[7]);
-          l.setTitulo(colunas[8]);
-          l.setAno(colunas[9]);
-          l.setIsbn(colunas[10]);
-          l.setEditora(colunas[11]);
-          l.setPaginas(Integer.parseInt(colunas[12]));
-          importLivro.put(l.getCodigoDeBarras(), l);
+        { 
+          Livro l2 = new Livro(Integer.parseInt(colunas[0]), Integer.parseInt(colunas[1]), Integer.parseInt(colunas[2]),
+                  colunas[3], colunas[4], colunas[5], colunas[6], colunas[7], colunas[8], colunas[9], colunas[10],
+                  colunas[11], Integer.parseInt(colunas[12]));
+          importLivro.put(l2.getCodigoDeBarras(), l2);
         } catch (Exception e)
         {
           System.out.println("Linha com erro");
@@ -85,7 +94,7 @@ public class LivroDAO
       livros = (HashMap<Integer, Livro>) xmlDecoder.readObject();
     } catch (Exception e)
     {
-      System.out.println("erro ao ler");
+      System.out.println("Erro ao ler");
     }
     return livros;
   }

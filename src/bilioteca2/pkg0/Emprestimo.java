@@ -8,6 +8,15 @@ public class Emprestimo
   private String diaEmpr;
   private String diaEntrg;
 
+  public Emprestimo(int codigoBarras, int exemplar, String nomeAluno, String diaEmpr, String diaEntrg)
+  {
+    this.codigoBarras = codigoBarras;
+    this.exemplar = exemplar;
+    this.nomeAluno = nomeAluno;
+    this.diaEmpr = diaEmpr;
+    this.diaEntrg = diaEntrg;
+  }
+
   public String getNomeAluno()
   {
     return nomeAluno;

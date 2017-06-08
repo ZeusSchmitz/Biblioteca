@@ -9,7 +9,6 @@ public class Livro implements Serializable
   private int exemplar;
   private String dataAquisicaoExemplar;
   private String dataCadastroSistema;
-  private String dadosLivro;
   private String Classificacao;
   private String areaConhecimento;
   private String autor;
@@ -23,14 +22,13 @@ public class Livro implements Serializable
   {
   }
 
-  public Livro(int codigoDeBarras, int idLivro, int exemplar, String dataAquisicaoExemplar, String dataCadastroSistema, String dadosLivro, String Classificacao, String areaConhecimento, String autor, String titulo, String ano, String isbn, String editora, int paginas)
+  public Livro(int codigoDeBarras, int idLivro, int exemplar, String dataAquisicaoExemplar, String dataCadastroSistema, String Classificacao, String areaConhecimento, String autor, String titulo, String ano, String isbn, String editora, int paginas)
   {
     this.codigoDeBarras = codigoDeBarras;
     this.idLivro = idLivro;
     this.exemplar = exemplar;
     this.dataAquisicaoExemplar = dataAquisicaoExemplar;
     this.dataCadastroSistema = dataCadastroSistema;
-    this.dadosLivro = dadosLivro;
     this.Classificacao = Classificacao;
     this.areaConhecimento = areaConhecimento;
     this.autor = autor;
@@ -48,7 +46,6 @@ public class Livro implements Serializable
             ", id livro= "+ idLivro + 
             ", data aquisição exemplar= "+ dataAquisicaoExemplar + 
             ", data cadastro sistema= "+ dataCadastroSistema + 
-            ", dados livro= "+ dadosLivro + 
             ", classificação= "+ Classificacao + 
             ", area conhecimento= "+ areaConhecimento + 
             ", autor= "+ autor + 
@@ -107,16 +104,6 @@ public class Livro implements Serializable
   public void setDataCadastroSistema(String dataCadastroSistema)
   {
     this.dataCadastroSistema = dataCadastroSistema;
-  }
-
-  public String getDadosLivro()
-  {
-    return dadosLivro;
-  }
-
-  public void setDadosLivro(String dadosLivro)
-  {
-    this.dadosLivro = dadosLivro;
   }
 
   public String getClassificacao()

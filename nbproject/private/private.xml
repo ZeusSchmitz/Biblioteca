@@ -9,11 +9,11 @@
             <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/migracao/MigraCSVparaXML.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/bilioteca2/pkg0/Bilioteca20.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/bilioteca2/pkg0/Aluno.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/dao/AlunoDAO.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/dao/EmprestimoDAO.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/bilioteca2/pkg0/Livro.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/bilioteca2/pkg0/Exemplar.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/bilioteca2/pkg0/Emprestimo.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/bilioteca2/pkg0/AlunoDAO.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/bilioteca2/pkg0/EmprestimoDAO.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/Bilioteca2.0/src/bilioteca2/pkg0/AutorizaEmprestimo.java</file>
         </group>
     </open-files>
 </project-private>

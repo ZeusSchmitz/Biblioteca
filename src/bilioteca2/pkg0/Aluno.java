@@ -2,7 +2,18 @@ package bilioteca2.pkg0;
 
 public class Aluno
 {
-  private String nome, curso, endereco, telefone, matricula;
+  private String nome, curso, matricula;
+
+  public Aluno(String nome, String curso, String matricula)
+  {
+    this.nome = nome;
+    this.curso = curso;
+    this.matricula = matricula;
+  }
+
+  public Aluno()
+  {
+  }
 
   public String getNome()
   {
@@ -22,26 +33,6 @@ public class Aluno
   public void setCurso(String curso)
   {
     this.curso = curso;
-  }
-
-  public String getEndereco()
-  {
-    return endereco;
-  }
-
-  public void setEndereco(String endereco)
-  {
-    this.endereco = endereco;
-  }
-
-  public String getTelefone()
-  {
-    return telefone;
-  }
-
-  public void setTelefone(String telefone)
-  {
-    this.telefone = telefone;
   }
 
   public String getMatricula()
