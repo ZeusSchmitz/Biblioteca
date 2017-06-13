@@ -9,27 +9,27 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
-import java.util.Set;
+//import java.util.Set;
+import excecoes.DaoDataException;
 
 public class AlunoDAO
 {
-  public String verifica_aluno(String matricula)
+  public Aluno buscaAluno(String matricula) throws DaoDataException
   {
     HashMap<String, Aluno> aluno_map = Ler_Aluno();
-    Set<String> chaves = aluno_map.keySet();
-    String resultado;
-    
-    boolean existeMatr = chaves.contains(matricula);
+//    Set<String> chaves = aluno_map.keySet();
+//    String resultado;
+//    aluno_map.containsKey(matricula);
+//    boolean existeMatr = chaves.contains(matricula);
 
-    if(existeMatr)
+    if(aluno_map.containsKey(matricula))
     {
-      resultado =  "Aluno: " + aluno_map.get(matricula).getNome() + " | Matricula: " + aluno_map.get(matricula).getMatricula();
+      return aluno_map.get(matricula);
     }
     else
     {
-      resultado = "Aluno não cadastrado";
+      throw new DaoDataException("Aluno não cadastrado");
     }
-    return resultado;
   }
 
   public void Gravar_aluno(HashMap<String, Aluno> lista)

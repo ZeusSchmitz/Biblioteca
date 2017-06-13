@@ -1,13 +1,16 @@
 package dao.xml;
 
+import bilioteca2.pkg0.Aluno;
 import bilioteca2.pkg0.Livro;
 import dao.EmprestimoDAO;
+import excecoes.DaoDataException;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -15,61 +18,51 @@ import java.util.Set;
 
 public class LivroDAO
 {
-  public void verifica_livro(int codigoBarras, int exemplar, String nomeAluno)
+
+  public void verifica_livro(Livro codigoBarras, Aluno nomeAluno) throws DaoDataException
   {
     HashMap<Integer, Livro> livro_map = lerLivros();
-    Set<Integer> chaves = livro_map.keySet();
+//    Set<Integer> chaves = livro_map.keySet();
     EmprestimoDAO empDao = new EmprestimoDAO();
-    
-    boolean existeLivro = chaves.contains(codigoBarras);
-    
-    if(existeLivro)
+
+  //  boolean existeLivro = chaves.contains(codigoBarras);
+
+    if (livro_map.containsKey(codigoBarras.getCodigoDeBarras()))
     {
-      empDao.verificaEmprestimo(codigoBarras, exemplar, nomeAluno);
+      empDao.verificaEmprestimo(codigoBarras, nomeAluno);
     }
     else
     {
-      System.out.println("Livro não cadástrado");
+      throw new DaoDataException("Livro não cadástrado");
     }
   }
-  
-  public void importa_livros()
+
+  public void importa_livros() throws FileNotFoundException
   {
     HashMap<Integer, Livro> importLivro = new HashMap<>();
-    try
+    Scanner file = new Scanner(new File("C:\\GereciaBilioteca\\final-livros-linux.csv"), "UTF-8");
+    while (file.hasNextLine())
     {
-      Scanner file = new Scanner(new File("C:\\GereciaBilioteca\\final-livros-linux.csv"), "UTF-8");
-      while (file.hasNextLine())
+      String linha = file.nextLine();
+      String[] colunas = linha.split("\\|");
+      try
       {
-        String linha = file.nextLine();
-        String[] colunas = linha.split("\\|");
-        try
-        { 
-          Livro l2 = new Livro(Integer.parseInt(colunas[0]), Integer.parseInt(colunas[1]), Integer.parseInt(colunas[2]),
-                  colunas[3], colunas[4], colunas[5], colunas[6], colunas[7], colunas[8], colunas[9], colunas[10],
-                  colunas[11], Integer.parseInt(colunas[12]));
-          importLivro.put(l2.getCodigoDeBarras(), l2);
-        } catch (Exception e)
-        {
-          System.out.println("Linha com erro");
-        }
-
+        Livro l = new Livro(Integer.parseInt(colunas[0]), Integer.parseInt(colunas[1]), Integer.parseInt(colunas[2]),
+                colunas[3], colunas[4], colunas[5], colunas[6], colunas[7], colunas[8], colunas[9], colunas[10],
+                colunas[11], Integer.parseInt(colunas[12]));
+        importLivro.put(l.getCodigoDeBarras(), l);
+      } catch (Exception e)
+      {
+        System.out.println("Linha com erro");
       }
-      saveAllLivrosXML(importLivro);
-    } catch (Exception e)
-
-    {
-      e.printStackTrace();
     }
-
+    saveAllLivrosXML(importLivro);
   }
 
-  public void saveAllLivrosXML(HashMap<Integer, Livro> livros)
+  public void saveAllLivrosXML(HashMap<Integer, Livro> livros) throws FileNotFoundException
   {
     HashMap<Integer, Livro> livroImportado = livros;
     FileOutputStream fout = null;
-    try
-    {
       fout = new FileOutputStream("C:\\GereciaBilioteca\\04-final-livros.xml");
       BufferedOutputStream bos = new BufferedOutputStream(fout);
       try (XMLEncoder xmlEncoder = new XMLEncoder(bos))
@@ -77,10 +70,6 @@ public class LivroDAO
         xmlEncoder.writeObject(livroImportado);
         xmlEncoder.close();
       }
-    } catch (Exception ex)
-    {
-      System.out.println("Erro: " + ex.getMessage());
-    }
   }
 
   public HashMap<Integer, Livro> lerLivros()
@@ -99,4 +88,12 @@ public class LivroDAO
     return livros;
   }
 
+  public Livro buscaLivroCodigo(int codigoBarras) throws DaoDataException
+  {
+    HashMap<Integer, Livro> livro_map = lerLivros();
+    if(livro_map.containsKey(codigoBarras))
+      return livro_map.get(codigoBarras);
+    else
+      throw new DaoDataException("Livro não encontrado");
+  }
 }

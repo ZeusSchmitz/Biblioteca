@@ -1,7 +1,9 @@
 package dao;
 
+import bilioteca2.pkg0.Aluno;
 import bilioteca2.pkg0.Biblioteca;
 import bilioteca2.pkg0.Emprestimo;
+import bilioteca2.pkg0.Livro;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.BufferedInputStream;
@@ -10,25 +12,26 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
+import excecoes.DaoDataException;
 import java.util.Set;
 
 public class EmprestimoDAO
 {
-  public void verificaEmprestimo(int codigoBarras, int exemplar, String nomeAluno)
+  public void verificaEmprestimo(Livro codigoBarras, Aluno nomeAluno) throws DaoDataException
   {
     HashMap<Integer, Emprestimo> empr_map = Ler_Emprestimo();
-    Set<Integer> chavesEmpr = empr_map.keySet();
+//    Set<Integer> chavesEmpr = empr_map.keySet();
     Biblioteca biblioteca = new Biblioteca();
     
-    boolean codPedido = chavesEmpr.contains(codigoBarras);
+//    boolean codPedido = chavesEmpr.contains(codigoBarras);
     
-    if(codPedido)
+    if(empr_map.containsKey(codigoBarras.getCodigoDeBarras()))
     {
-      System.out.println("Exemplar indisponivel no momento"); 
+      throw new DaoDataException("Exemplar indisponivel no momento"); 
     }
     else
     {
-      biblioteca.efetuaEmprestimo(codigoBarras, exemplar, nomeAluno);
+      biblioteca.efetuaEmprestimo(codigoBarras, nomeAluno);
       System.out.println("Emprestimo efetuado com sucesso"); 
     }
   }

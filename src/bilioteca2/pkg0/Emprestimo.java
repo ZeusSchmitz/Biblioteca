@@ -2,30 +2,29 @@ package bilioteca2.pkg0;
 
 public class Emprestimo
 {
-  private int codigoBarras;
-  private int exemplar;
-  private String nomeAluno;
+  private Livro codigoBarras;
+  private Aluno nomeAluno;
   private String diaEmpr;
-  private String diaEntrg;
 
-  public Emprestimo(int codigoBarras, int exemplar, String nomeAluno, String diaEmpr, String diaEntrg)
+  public Emprestimo(Livro codigoBarras, Aluno nomeAluno, String diaEmpr, String diaEntrg)
   {
     this.codigoBarras = codigoBarras;
-    this.exemplar = exemplar;
     this.nomeAluno = nomeAluno;
     this.diaEmpr = diaEmpr;
     this.diaEntrg = diaEntrg;
   }
 
-  public String getNomeAluno()
+  public Aluno getNomeAluno()
   {
     return nomeAluno;
   }
 
-  public void setNomeAluno(String nomeAluno)
+  public void setNomeAluno(Aluno nomeAluno)
   {
     this.nomeAluno = nomeAluno;
   }
+  
+  private String diaEntrg;
 
   public String getDiaEmpr()
   {
@@ -51,29 +50,18 @@ public class Emprestimo
   {
   }
 
-  public Emprestimo(int codigoBarras, int exemplar)
+  public Emprestimo(Livro codigoBarras)
   {
     this.codigoBarras = codigoBarras;
-    this.exemplar = exemplar;
   }
 
-  public int getCodigoBarras()
+  public Livro getCodigoBarras()
   {
     return codigoBarras;
   }
 
-  public void setCodigoBarras(int codigoBarras)
+  public void setCodigoBarras(Livro codigoBarras)
   {
     this.codigoBarras = codigoBarras;
-  }
-
-  public int getExemplar()
-  {
-    return exemplar;
-  }
-
-  public void setExemplar(int exemplar)
-  {
-    this.exemplar = exemplar;
   }
 }

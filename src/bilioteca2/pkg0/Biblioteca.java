@@ -1,8 +1,6 @@
 package bilioteca2.pkg0;
 
 import dao.EmprestimoDAO;
-import dao.AlunoDAO;
-import dao.xml.LivroDAO;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,7 +11,7 @@ public class Biblioteca
 {
   EmprestimoDAO empDao = new EmprestimoDAO();
 
-  public void efetuaEmprestimo(int codigoBarras, int exemplar, String nomeAluno)
+  public void efetuaEmprestimo(Livro codigoBarras, Aluno nomeAluno)
   {
     Emprestimo emp = new Emprestimo();
     Date data = new Date();
@@ -24,11 +22,10 @@ public class Biblioteca
     cal.add(cal.DAY_OF_MONTH, + 10);
 
     emp.setCodigoBarras(codigoBarras);
-    emp.setExemplar(exemplar);
     emp.setNomeAluno(nomeAluno);
     emp.setDiaEmpr(fomatador.format(data));
     emp.setDiaEntrg(fomatador.format(cal.getTime()));
-    empr_map.put(emp.getCodigoBarras(), emp);
+    empr_map.put(emp.getCodigoBarras().getCodigoDeBarras(), emp);
     empDao.Gravar_Emprestimo(empr_map);
   }
   
