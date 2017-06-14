@@ -13,18 +13,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import excecoes.DaoDataException;
-import java.util.Set;
 
 public class EmprestimoDAO
 {
   public void verificaEmprestimo(Livro codigoBarras, Aluno nomeAluno) throws DaoDataException
   {
     HashMap<Integer, Emprestimo> empr_map = Ler_Emprestimo();
-//    Set<Integer> chavesEmpr = empr_map.keySet();
     Biblioteca biblioteca = new Biblioteca();
-    
-//    boolean codPedido = chavesEmpr.contains(codigoBarras);
-    
+        
     if(empr_map.containsKey(codigoBarras.getCodigoDeBarras()))
     {
       throw new DaoDataException("Exemplar indisponivel no momento"); 

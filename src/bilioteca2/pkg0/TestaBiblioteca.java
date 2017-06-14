@@ -11,10 +11,11 @@ public class TestaBiblioteca
   {
     LivroDAO livro = new LivroDAO();
     Biblioteca biblioteca = new Biblioteca();
-    AlunoDAO aluno = new AlunoDAO();
+    AlunoDAO alunoDao = new AlunoDAO();
+    Aluno aluno = alunoDao.buscaAluno("1897");
     
-//    System.out.println(aluno.buscaAluno("198"));
-    livro.verifica_livro(new Livro(97493655, 309817, 2, "30/01/2016", "28/09/2016", "530.8", "Oi", "Cara", "UHUU", "28/09/2016", "1234", "SeiNao", 0), new Aluno("Zeus", "TADS", "1987")); //Introdução à administração
+    System.out.println(aluno);
+//    livro.verifica_livro(new Livro(97493655, 309817, 2, "30/01/2016", "28/09/2016", "530.8", "Oi", "Cara", "UHUU", "28/09/2016", "1234", "SeiNao", 0), new Aluno("Zeus", "TADS", "1987")); //Introdução à administração
 //    biblioteca.devolverEmprestimo(97453545);    
   }
 }

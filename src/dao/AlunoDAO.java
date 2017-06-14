@@ -17,19 +17,11 @@ public class AlunoDAO
   public Aluno buscaAluno(String matricula) throws DaoDataException
   {
     HashMap<String, Aluno> aluno_map = Ler_Aluno();
-//    Set<String> chaves = aluno_map.keySet();
-//    String resultado;
-//    aluno_map.containsKey(matricula);
-//    boolean existeMatr = chaves.contains(matricula);
 
     if(aluno_map.containsKey(matricula))
-    {
       return aluno_map.get(matricula);
-    }
     else
-    {
       throw new DaoDataException("Aluno não cadastrado");
-    }
   }
 
   public void Gravar_aluno(HashMap<String, Aluno> lista)
