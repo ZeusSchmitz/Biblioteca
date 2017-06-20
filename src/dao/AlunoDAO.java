@@ -9,7 +9,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
-//import java.util.Set;
 import excecoes.DaoDataException;
 
 public class AlunoDAO
@@ -34,8 +33,6 @@ public class AlunoDAO
       XMLEncoder gravar_xml = new XMLEncoder(pegar_arquivo);
       gravar_xml.writeObject(lista);
       gravar_xml.close();
-      System.out.println("Cadastrado com sucesso");
-
     } catch (FileNotFoundException ex)
     {
       System.out.println("Erro ao gravar: " + ex.getMessage());

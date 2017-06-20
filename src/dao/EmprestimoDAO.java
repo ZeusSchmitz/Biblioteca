@@ -32,7 +32,7 @@ public class EmprestimoDAO
     }
   }
   
-  public void Gravar_Emprestimo(HashMap<Integer, Emprestimo> lista)
+  public void Gravar_Emprestimo(HashMap<Integer, Emprestimo> lista) 
   {
     FileOutputStream acessa_arquivo = null;
     try
@@ -43,8 +43,6 @@ public class EmprestimoDAO
       {
         gravar_xml.writeObject(lista);
       }
-      System.out.println("Cadastrado com sucesso");
-
     } catch (FileNotFoundException ex)
     {
       System.out.println("Erro ao gravar: " + ex.getMessage());

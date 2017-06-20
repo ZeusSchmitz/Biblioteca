@@ -1,11 +1,11 @@
 package bilioteca2.pkg0;
 
 import dao.EmprestimoDAO;
+import excecoes.DaoDataException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Set;
 
 public class Biblioteca
 {
@@ -29,14 +29,11 @@ public class Biblioteca
     empDao.Gravar_Emprestimo(empr_map);
   }
   
-  public void devolverEmprestimo(int codigoBarras)
+  public void devolverEmprestimo(int codigoBarras) throws excecoes.DaoDataException
   {
     HashMap<Integer, Emprestimo> empr_map = empDao.Ler_Emprestimo();
-    Set<Integer> chavesEmpr = empr_map.keySet();
     
-    boolean codPedido = chavesEmpr.contains(codigoBarras);
-    
-    if(codPedido)
+    if(empr_map.containsKey(codigoBarras))
     {
       empr_map.remove(codigoBarras);
       empDao.Gravar_Emprestimo(empr_map);
@@ -44,7 +41,7 @@ public class Biblioteca
     }
     else
     {
-      System.out.println("Emprestimo inexistente"); 
+      throw new DaoDataException("Emprestimo inexistente"); 
     }
   }
 }

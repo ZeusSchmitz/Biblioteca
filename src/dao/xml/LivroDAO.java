@@ -1,8 +1,6 @@
 package dao.xml;
 
-import bilioteca2.pkg0.Aluno;
 import bilioteca2.pkg0.Livro;
-import dao.EmprestimoDAO;
 import excecoes.DaoDataException;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -14,29 +12,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Set;
 
 public class LivroDAO
 {
-
-  public void verifica_livro(Livro codigoBarras, Aluno nomeAluno) throws DaoDataException
-  {
-    HashMap<Integer, Livro> livro_map = lerLivros();
-//    Set<Integer> chaves = livro_map.keySet();
-    EmprestimoDAO empDao = new EmprestimoDAO();
-
-  //  boolean existeLivro = chaves.contains(codigoBarras);
-
-    if (livro_map.containsKey(codigoBarras.getCodigoDeBarras()))
-    {
-      empDao.verificaEmprestimo(codigoBarras, nomeAluno);
-    }
-    else
-    {
-      throw new DaoDataException("Livro não cadástrado");
-    }
-  }
-
   public void importa_livros() throws FileNotFoundException
   {
     HashMap<Integer, Livro> importLivro = new HashMap<>();
@@ -53,7 +31,7 @@ public class LivroDAO
         importLivro.put(l.getCodigoDeBarras(), l);
       } catch (Exception e)
       {
-        System.out.println("Linha com erro");
+        System.out.println("Linha com erro " + e);
       }
     }
     saveAllLivrosXML(importLivro);
@@ -83,7 +61,7 @@ public class LivroDAO
       livros = (HashMap<Integer, Livro>) xmlDecoder.readObject();
     } catch (Exception e)
     {
-      System.out.println("Erro ao ler");
+      System.out.println("Erro ao ler " + e);
     }
     return livros;
   }
@@ -95,5 +73,20 @@ public class LivroDAO
       return livro_map.get(codigoBarras);
     else
       throw new DaoDataException("Livro não encontrado");
+  }
+
+  public void incluiLivro(Livro livro) throws DaoDataException, FileNotFoundException
+  {
+    LivroDAO livroDao = new LivroDAO();
+    HashMap<Integer, Livro> livro_map = livroDao.lerLivros();
+    if (livro_map.containsKey(livro.getCodigoDeBarras()))
+    {
+      throw new DaoDataException("Livro já cadastrado");
+    }
+    else
+    {
+      livro_map.put(livro.getCodigoDeBarras(), livro);
+      saveAllLivrosXML(livro_map);
+    }
   }
 }
